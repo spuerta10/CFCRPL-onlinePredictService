@@ -1,5 +1,5 @@
 {
-    "mlflow_ip": "http://127.0.0.1:5000",
+    "mlflow_ip": "http://35.239.222.15:5000",
     "mlmodel_name": "xgb-credit-risk-model",
     "mlmodel_version": 1,
     "mlmodel_alias": "champion"
