@@ -3,7 +3,9 @@ from typing import Optional
 from pydantic import BaseModel, model_validator
 
 
-class ConfSchema(BaseModel):
+class MLModelConfSchema(BaseModel):
+    """Class to parse and validate an MLmodel conf file. 
+    """
     mlflow_ip: str
     mlmodel_name: str
     mlmodel_version: Optional[int] = None 
