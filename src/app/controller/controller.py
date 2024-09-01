@@ -4,6 +4,7 @@ from app.model.preprocess.preprocess import Preprocess
 
 from flask import (
     Blueprint,
+    Response,
     request,
     jsonify
 )
@@ -13,14 +14,14 @@ controller_bp = Blueprint("controller", __name__)
 
 
 @controller_bp.route("/predict", methods=["POST"])
-def predict():
+def predict() -> Response:
     """Parses, preprocess and asks a prediction from a MLModel based on clients requests data.
 
     Raises:
-        ValueError: If a clients request is empty.
+        ValueError: If a client's request is empty.
 
     Returns:
-        _type_: _description_
+        Response: The MLModel prediction. 
     """
     try:
         request_json: dict = request.get_json(silent=True)
