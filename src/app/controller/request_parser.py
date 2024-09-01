@@ -2,6 +2,8 @@ from pydantic import BaseModel, field_validator
 
 
 class RequestParser(BaseModel):
+    """Class to parse and validate any clients requests. 
+    """
     person_age: int
     person_income: float
     person_home_ownership: str

@@ -12,6 +12,14 @@ class Transform(TransformInterface):
     
     
     def transform(self, data: DataFrame) -> DataFrame:
+        """Encodes categorical data in the request.  
+
+        Args:
+            data (DataFrame): Data to be preprocessed before asking to MLmodel.
+
+        Returns:
+            DataFrame: Data ready to be passed to MLmodel to make a prediction.
+        """
         data = data.convert_dtypes()
         encoded_cols: DataFrame = data.select_dtypes(include=["string"]) \
             .apply(lambda x: LabelEncoder().fit_transform(x))
@@ -23,6 +31,15 @@ class Transform(TransformInterface):
 class Preprocess:
     @staticmethod
     def run(data: str | dict):
+        """Performs the ingestion and transformation of the given data.
+        Returns data ready 
+
+        Args:
+            data (str | dict): Path to JSON file or JSON content.
+
+        Returns:
+            _type_: Data ready to be passed to MLmodel to make a prediction.
+        """
         ingest = JSON(data)
         transform = Transform()
         preprocessed_data: DataFrame = Pipeline(
